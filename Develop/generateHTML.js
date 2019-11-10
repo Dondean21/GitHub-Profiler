@@ -170,5 +170,46 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
+      </style>
+      </head>
+      `;
         }
+
+
+     function gitInfo(res) {
+return `
+<body class="wrapper">
+<div class="photo-header">
+  <img src="${res.data.avatar_url}" alt="" />
+  <h2>Hello!</h2>
+  <h2>My name is ${res.data.name}</h2>
+  <h5>Currently @ ${res.data.company} </h5>
+  <div class="links-nav">
+    <a target="_blank" href="https://www.google.com/maps/place/${res.data.location}" class="nav-link"><i class="fas fa-location-arrow"></i> ${res.data.location}</a>
+    <a target="_blank" href="${res.data.html_url}" class="nav-link"><i class="fab fa-github-square"></i> GitHub</a>
+    <a target="_blank" href="${res.data.blog}" class="nav-link"> <i class="fas fa-rss-square"></i> Blog</a>
+  </div>
+</div>
+<div class="container">
+  <h3>${res.data.bio}</h3>
+  <div class="row">
+    <div class="card col">Public Repositories<br>
+      ${res.data.public_repos}</div>
+    <div class="card col">Followers<br>
+      ${res.data.followers}</div>
+  </div>
+  <div class="row">
+    <div class="card col">GitHub Starts<br>
+      </div>
+    <div class="card col">Following<br>
+      ${res.data.following}</div>
+  </div>
+</div>
+</body>
+</html>`;
+}
+
+module.exports = {
+generateHTML: generateHTML,
+gitInfo: gitInfo
+};
