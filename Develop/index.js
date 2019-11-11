@@ -1,15 +1,15 @@
 const fs = require("fs");
-const inquirer = require("inquirer");
-const axios = require("axios");
-const generateHTML = require("./generateHTML");
 const html = "index.html";
+const axios = require("axios");
 const pdf = require("html-pdf")
+const inquirer = require("inquirer");
+const generateHTML = require("./generateHTML");
 
 async function printPDF() {
     var fullHTML = fs.readFileSync('./index.html', 'utf8');
     var options = { format: 'A4' };
 
-    pdf.create(fullHTML, options).toFile('./test.pdf', function (err, res) {
+    pdf.create(fullHTML, options).toFile('./profile.pdf', function (err, res) {
       if (err) return console.log(err);
       console.log(res)
     })
